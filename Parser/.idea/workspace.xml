@@ -22,8 +22,8 @@
       <file leaf-file-name="Parser.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ParserFolder/Parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="55" column="34" lean-forward="true" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
+            <state relative-caret-position="255">
+              <caret line="69" column="21" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -229,7 +229,7 @@
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" auto_hide="true" id="Run" order="2" sideWeight="0.49848714" weight="0.32972136" />
       <window_info anchor="bottom" auto_hide="true" x="22" y="277" width="1322" height="213" id="Terminal" order="7" weight="0.32972136" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20045386" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20347957" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -258,6 +258,33 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ParserFolder/Parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="34" lean-forward="true" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ParserFolder/Test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ParserFolder/CsvCreator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ParserFolder/Parser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
@@ -522,8 +549,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ParserFolder/Parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="55" column="34" lean-forward="true" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
+        <state relative-caret-position="255">
+          <caret line="69" column="21" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
