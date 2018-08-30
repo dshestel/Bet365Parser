@@ -14,12 +14,13 @@ myData = [["Time"], ["Attacks"], ["Dangerous Attacks"], ["Possession %"], ["On T
 
 def leagueSplitter(league):
     league = league.text.split('\n')
+    print(league)
     splittedCommandByLeague =[[]]
     s = []
     for i in range(len(league)):
         if len(league[i]) > 5:
             s.append(league[i])
-        elif len(league[i]) == 5 or len(league[i]) == 3 or len(league[i]) == 4:
+        elif len(league[i]) == 3 or len(league[i]) == 4 or len(league[i]) == 5:
             if len(league[i+1]) > 5 and len(league[i+3]) < 5:
                 splittedCommandByLeague.append(s)
                 s = []
