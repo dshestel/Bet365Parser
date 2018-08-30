@@ -1,5 +1,7 @@
+import csv
 import time
 import sys
+import os.path
 from selenium import webdriver
 
 
@@ -7,37 +9,82 @@ driver = webdriver.Chrome('D:/chromedriver1.exe')
 
 driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
 driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
-#<div class="ipo-Competition ipo-Competition-open "><div class="ipo-CompetitionButton "><div class="ipo-CompetitionButton_NameLabel ipo-CompetitionButton_NameLabelHasMarketHeading " style="">UEFA Europa League Qualifying</div><div class="ipo-CompetitionButton_MarketHeadingWrapper"><div class="ipo-CompetitionButton_MarketHeadingLabel ">1X2</div><div class="ipo-CompetitionButton_MarketHeadingLabel ">Next Goal</div><div class="ipo-CompetitionButton_MarketHeadingLabel ">Match Goals</div></div></div><div class="ipo-Competition_FavouriteWrapper"><div class="ipo-Competition_FavouriteButton "></div></div><div class="ipo-FixtureRenderer ipo-Competition_Container "><div class="ipo-Fixture ipo-Fixture_CL1 ipo-Fixture-hasavicon ipo-Fixture-hastimer ipo-Fixture_MainMarkets "><div class="ipo-Fixture_TableRow "><div class="ipo-Fixture_ScoreDisplay ipo-ScoreDisplayStandard "><div class="ipo-ScoreDisplayStandard_Wrapper "><div class="ipo-InPlayTimer ">52:51</div><div class="ipo-TeamStack "><div class="ipo-TeamStack_Team"><span class="ipo-TeamStack_TeamWrapper">FC Astana</span><div class="ipo-SoccerTeamStack_TeamGoalMarker "><span class="ipo-SoccerTeamStack_TeamGoalMarkerSpan ">GOAL</span></div></div><div class="ipo-TeamStack_Team"><span class="ipo-TeamStack_TeamWrapper">Apoel Nicosia</span><div class="ipo-SoccerTeamStack_TeamGoalMarker "><span class="ipo-SoccerTeamStack_TeamGoalMarkerSpan ">GOAL</span></div></div><div class="ipo-TeamStack_Team"><span class="ipo-TeamStack_TeamWrapper ipo-TeamStack_DrawWrapper">Draw</span></div></div><div class="ipo-TeamPoints "><div class="ipo-TeamPoints_TeamScoresWrapper "><div class="ipo-TeamPoints_TeamScore ipo-TeamPoints_TeamScore-teamone ">1</div><div class="ipo-TeamPoints_TeamScore ipo-TeamPoints_TeamScore-teamtwo ">0</div></div></div><div class="ipo-ScoreDisplayStandard_MediaButton "><div class="wl-MediaButtonLoader wl-MediaButtonLoader_MLVideo "></div><div class="wl-MediaButtonLoader wl-MediaButtonLoader_ML1 wl-MediaButtonLoader_ML1-selected "></div></div></div></div><!----><div class="ipo-MainMarkets "><div class="ipo-MainMarketRenderer "><div class="gl-ParticipantCentered gl-ParticipantCentered_NoHandicap ipo-AllMarketsParticipant gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name"></span><span class="gl-ParticipantCentered_Odds">1/5</span></div><div class="gl-ParticipantCentered gl-ParticipantCentered_NoHandicap ipo-AllMarketsParticipant gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name"></span><span class="gl-ParticipantCentered_Odds">14/1</span></div><div class="gl-ParticipantCentered gl-ParticipantCentered_NoHandicap ipo-AllMarketsParticipant gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name"></span><span class="gl-ParticipantCentered_Odds">9/2</span></div></div><div class="ipo-MainMarketRenderer "><div class="gl-ParticipantCentered gl-ParticipantCentered_NoHandicap ipo-AllMarketsParticipant ipo-ParticipantNoGoal gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name"></span><span class="gl-ParticipantCentered_Odds">5/4</span></div><div class="gl-ParticipantCentered gl-ParticipantCentered_NoHandicap ipo-AllMarketsParticipant ipo-ParticipantNoGoal gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name"></span><span class="gl-ParticipantCentered_Odds">12/5</span></div><div class="gl-ParticipantCentered gl-ParticipantCentered_NoHandicap ipo-AllMarketsParticipant ipo-ParticipantNoGoal gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name">No 2nd</span><span class="gl-ParticipantCentered_Odds">13/8</span></div></div><div class="ipo-MainMarketRenderer "><div class="gl-ParticipantCentered ipo-AllMarketsParticipant gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name"></span><span class="gl-ParticipantCentered_Handicap">O  1.5</span><span class="gl-ParticipantCentered_Odds">4/9</span></div><div class="gl-ParticipantCentered ipo-AllMarketsParticipant gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name"></span><span class="gl-ParticipantCentered_Handicap">U  1.5</span><span class="gl-ParticipantCentered_Odds">13/8</span></div><div class="ipo-MainMarketRenderer_BlankParticipant "></div></div></div><div class="ipo-FixtureEventCountButton "><div class="ipo-FixtureEventCountButton_FavouriteWrapper"><div class="ipo-FixtureEventCountButton_FavouriteButton "></div></div><div class="ipo-FixtureEventCountButton_EventCountWrapper ">69</div></div></div></div><div class="ipo-Fixture ipo-Fixture_CL1 ipo-Fixture-hasavicon ipo-Fixture-hastimer ipo-Fixture_MainMarkets "><div class="ipo-Fixture_TableRow "><div class="ipo-Fixture_ScoreDisplay ipo-ScoreDisplayStandard "><div class="ipo-ScoreDisplayStandard_Wrapper "><div class="ipo-InPlayTimer ">54:59</div><div class="ipo-TeamStack "><div class="ipo-TeamStack_Team"><span class="ipo-TeamStack_TeamWrapper">FC Ufa</span><div class="ipo-SoccerTeamStack_TeamGoalMarker "><span class="ipo-SoccerTeamStack_TeamGoalMarkerSpan ">GOAL</span></div></div><div class="ipo-TeamStack_Team"><span class="ipo-TeamStack_TeamWrapper">Rangers</span><div class="ipo-SoccerTeamStack_TeamGoalMarker "><span class="ipo-SoccerTeamStack_TeamGoalMarkerSpan ">GOAL</span></div></div><div class="ipo-TeamStack_Team"><span class="ipo-TeamStack_TeamWrapper ipo-TeamStack_DrawWrapper">Draw</span></div></div><div class="ipo-TeamPoints "><div class="ipo-TeamPoints_TeamScoresWrapper "><div class="ipo-TeamPoints_TeamScore ipo-TeamPoints_TeamScore-teamone ">1</div><div class="ipo-TeamPoints_TeamScore ipo-TeamPoints_TeamScore-teamtwo ">1</div></div></div><div class="ipo-ScoreDisplayStandard_MediaButton "><div class="wl-MediaButtonLoader wl-MediaButtonLoader_MLVideo "></div><div class="wl-MediaButtonLoader wl-MediaButtonLoader_ML1 "></div></div></div></div><!----><div class="ipo-MainMarkets "><div class="ipo-MainMarketRenderer "><div class="gl-ParticipantCentered gl-ParticipantCentered_NoHandicap ipo-AllMarketsParticipant gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name"></span><span class="gl-ParticipantCentered_Odds">1/1</span></div><div class="gl-ParticipantCentered gl-ParticipantCentered_NoHandicap ipo-AllMarketsParticipant gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name"></span><span class="gl-ParticipantCentered_Odds">5/1</span></div><div class="gl-ParticipantCentered gl-ParticipantCentered_NoHandicap ipo-AllMarketsParticipant gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name"></span><span class="gl-ParticipantCentered_Odds">6/4</span></div></div><div class="ipo-MainMarketRenderer "><div class="gl-ParticipantCentered gl-ParticipantCentered_NoHandicap ipo-AllMarketsParticipant ipo-ParticipantNoGoal gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name"></span><span class="gl-ParticipantCentered_Odds">5/6</span></div><div class="gl-ParticipantCentered gl-ParticipantCentered_NoHandicap ipo-AllMarketsParticipant ipo-ParticipantNoGoal gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name"></span><span class="gl-ParticipantCentered_Odds">3/1</span></div><div class="gl-ParticipantCentered gl-ParticipantCentered_NoHandicap ipo-AllMarketsParticipant ipo-ParticipantNoGoal gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name">No 3rd</span><span class="gl-ParticipantCentered_Odds">12/5</span></div></div><div class="ipo-MainMarketRenderer "><div class="gl-ParticipantCentered ipo-AllMarketsParticipant gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name"></span><span class="gl-ParticipantCentered_Handicap">O  3.5</span><span class="gl-ParticipantCentered_Odds">13/8</span></div><div class="gl-ParticipantCentered ipo-AllMarketsParticipant gl-ParticipantCentered_BlankName "><span class="gl-ParticipantCentered_Name"></span><span class="gl-ParticipantCentered_Handicap">U  3.5</span><span class="gl-ParticipantCentered_Odds">4/9</span></div><div class="ipo-MainMarketRenderer_BlankParticipant "></div></div></div><div class="ipo-FixtureEventCountButton "><div class="ipo-FixtureEventCountButton_FavouriteWrapper"><div class="ipo-FixtureEventCountButton_FavouriteButton "></div></div><div class="ipo-FixtureEventCountButton_EventCountWrapper ">68</div></div></div></div></div></div>
+
+
+myData = [["Time"], ["Attacks"], ["Dangerous Attacks"], ["Possession %"], ["On Target"], ["Off Target"], ["League"], ["Command Name"], ["Score"]]
+
+def newLeagueSplitter(leagues):
+    splittedCommandByLeague = [[]]
+    s = []
+    for i in range(len(leagues)):
+        league = leagues[i].text.split('\n')
+        s.append(league[0])
+        for j in range(len(league)):
+            if len(league[j]) == 5 and league[j][2] == ':':
+                s.append(league[j + 1])
+                s.append(league[j + 2])
+        splittedCommandByLeague.append(s)
+        s = []
+    return splittedCommandByLeague
+
+
+def newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, leagues, commandName, score):
+
+    file_exist = os.path.isfile('D:/MatchDataset/' + commandName[0].text + commandName[1].text + '.csv')
+    file = open('D:/MatchDataset/' + commandName[0].text + commandName[1].text + '.csv', 'a+')
+    writer = csv.writer(file)
+    if file_exist == False:
+        writer.writerow(myData)
+    data = [timer.text]
+    data.append([statsTeamOne[0].text, statsTeamTwo[0].text])
+    data.append([statsTeamOne[1].text, statsTeamTwo[1].text])
+    if len(statsTeamOne) > 2:
+        data.append([statsTeamOne[2].text, statsTeamTwo[2].text])
+    else:
+        data.append(['0', '0'])
+    data.append([moreStatsOne[0].text, moreStatsTwo[0].text])
+    data.append([moreStatsOne[1].text, moreStatsTwo[1].text])
+    leagues = newLeagueSplitter(leagues)
+    leagueName = []
+    for i in range(len(leagues)):
+        for j in range(len(leagues[i])):
+            if [commandName[0].text] == [leagues[i][j]] or [commandName[1].text] == [leagues[i][j]]:
+               leagueName.append(leagues[i][0])
+
+    if len(leagueName) > 0:
+        data.append([leagueName[0]])
+    else:
+        data.append(["error"])
+    data.append([commandName[0].text, commandName[1].text])
+    data.append([score[0].text, score[1].text])
+    writer.writerow(data)
+    print(data)
+    file.close()
+
 
 while 1:
     time.sleep(5)
     count = 0
     elements = driver.find_elements_by_xpath("//div[@class='wl-MediaButtonLoader wl-MediaButtonLoader_ML1 ']")
-    try:
-        statsTeamOne = driver.find_elements_by_xpath("//div[@class='ml1-StatWheel_Team1Text ']")
-        statsTeamTwo = driver.find_elements_by_xpath("//div[@class='ml1-StatWheel_Team2Text ']")
-        moreStatsOne = driver.find_elements_by_xpath("//span[@class='ml1-SoccerStatsBar_MiniBarValue"
-                                                     " ml1-SoccerStatsBar_MiniBarValue-1 ']")
-        moreStatsTwo = driver.find_elements_by_xpath("//span[@class='ml1-SoccerStatsBar_MiniBarValue"
-                                                     " ml1-SoccerStatsBar_MiniBarValue-2 ']")
-        commandName = driver.find_elements_by_xpath("//div[@class='ml1-ScoreHeader_TeamText ']")
-        score = driver.find_elements_by_xpath("//div[@class='ml1-ScoreHeader_Score ']")
-        league = driver.find_elements_by_xpath("//div[@class='ipo-Competition ipo-Competition-open ']")
 
-        for i in range(len(league)):
-            print(league[i].text)
+    for element in elements:
+        element.click()
+        time.sleep(1)
+        try:
+            statsTeamOne = driver.find_elements_by_xpath("//div[@class='ml1-StatWheel_Team1Text ']")
+            statsTeamTwo = driver.find_elements_by_xpath("//div[@class='ml1-StatWheel_Team2Text ']")
+            moreStatsOne = driver.find_elements_by_xpath("//span[@class='ml1-SoccerStatsBar_MiniBarValue"
+                                                         " ml1-SoccerStatsBar_MiniBarValue-1 ']")
+            moreStatsTwo = driver.find_elements_by_xpath("//span[@class='ml1-SoccerStatsBar_MiniBarValue"
+                                                         " ml1-SoccerStatsBar_MiniBarValue-2 ']")
+            commandName = driver.find_elements_by_xpath("//div[@class='ml1-ScoreHeader_TeamText ']")
+            score = driver.find_elements_by_xpath("//div[@class='ml1-ScoreHeader_Score ']")
+            leagues = driver.find_elements_by_xpath("//div[@class='ipo-Competition ipo-Competition-open ']")
+            timer = driver.find_element_by_xpath("//span[@class='ml1-ScoreHeader_Clock ']")
 
-        # for i in range(len(score)):
-        #     print(score[i].text)
+            newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, leagues, commandName, score)
 
-        # for i in range(len(commandName)):
-        #     print(commandName[i].text)
+        except:
+            print("Unexpected error:", sys.exc_info()[0])
 
-        # for i in range(len(moreStatsOne)):
-        #     print(moreStatsTwo[i].text)
-
-        # for i in range(len(statsTeamOne)):
-        #     print(statsTeamOne[i].text)
-        #     print(statsTeamTwo[i].text)
-    except:
-        print("Unexpected error:", sys.exc_info()[0])
+    driver.refresh()
