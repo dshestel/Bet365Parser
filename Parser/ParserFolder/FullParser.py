@@ -10,8 +10,24 @@ driver = webdriver.Chrome('D:/chromedriver1.exe')
 driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
 driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
 
+splittedCoef = [[]]
 
-myData = [["Time"], ["Attacks"], ["Dangerous Attacks"], ["Possession %"], ["On Target"], ["Off Target"], ["League"], ["Command Name"], ["Score"]]
+myData = [["Time"], ["Attacks"], ["Dangerous Attacks"], ["Possession %"], ["On Target"], ["Off Target"], ["League"], ["Command Name"], ["Score"],
+          ["1x2 First command"], ["1x2 The second command"], ["1x2 Draw"], ["Next goal First command"], ["Next goal second command"], ["Next goal Draw"],
+          ["Match goals First command"], ["Match goals The second command"], ["Match goals Draw"]]
+
+def getCoef(league, index):
+    coef = []
+    splittedCoef.append(league[index - 5])
+    for i in range(index, index + 11):
+        try:
+            if (' ' in league[i]) == False:
+                value = float(league[i])
+                coef.append(value)
+        except:
+            print("Unexpected error:", sys.exc_info()[0])
+    splittedCoef.append(coef)
+
 
 def newLeagueSplitter(leagues):
     splittedCommandByLeague = [[]]
@@ -21,8 +37,10 @@ def newLeagueSplitter(leagues):
         s.append(league[0])
         for j in range(len(league)):
             if len(league[j]) == 5 and league[j][2] == ':':
+                getCoef(league, j + 6)  #+4 because 0 - time +1 - command 1 name +2 - command 2 name +3 - draw
                 s.append(league[j + 1])
                 s.append(league[j + 2])
+
         splittedCommandByLeague.append(s)
         s = []
     return splittedCommandByLeague
@@ -82,6 +100,9 @@ while 1:
             leagues = driver.find_elements_by_xpath("//div[@class='ipo-Competition ipo-Competition-open ']")
             timer = driver.find_element_by_xpath("//span[@class='ml1-ScoreHeader_Clock ']")
 
+            #print(leagues[0].text)
+            #newLeagueSplitter(leagues)
+            #print(splittedCoef)
             newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, leagues, commandName, score)
 
         except:

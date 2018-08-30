@@ -1,6 +1,9 @@
-test = "1"
+test = "1.5"
 
-print(1 + int(test))
+try:
+    print(float(test))
+except:
+    print ("error")
 
 
 # import csv
