@@ -57,9 +57,9 @@ def newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, lea
     if file_exist == False:
         writer.writerow(myData)
     if len(timer.text) > 0:
-        data = [timer.text]
+        data = [[timer.text]]
     else:
-        data = ['00:00']
+        data = [['00:00']]
 
     if len(statsTeamOne) > 0:
         data.append([statsTeamOne[0].text, statsTeamTwo[0].text])
@@ -129,6 +129,7 @@ while 1:
                 score = driver.find_elements_by_xpath("//div[@class='ml1-ScoreHeader_Score ']")
                 leagues = driver.find_elements_by_xpath("//div[@class='ipo-Competition ipo-Competition-open ']")
                 timer = driver.find_element_by_xpath("//span[@class='ml1-ScoreHeader_Clock ']")
+
 
                 newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, leagues, commandName, score)
                 iteration = 1
