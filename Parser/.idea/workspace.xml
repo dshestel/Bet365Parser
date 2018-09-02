@@ -36,10 +36,13 @@
       <file leaf-file-name="FullParser.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ParserFolder/FullParser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="53" column="100" lean-forward="true" selection-start-line="53" selection-start-column="100" selection-end-line="53" selection-end-column="100" />
+            <state relative-caret-position="210">
+              <caret line="116" column="14" selection-start-line="116" selection-start-column="14" selection-end-line="116" selection-end-column="14" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#745#1081#0" />
+                <element signature="e#1120#1688#0" />
+                <element signature="e#1803#3872#0" />
               </folding>
             </state>
           </provider>
@@ -112,7 +115,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -129,6 +131,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -293,7 +296,7 @@
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" auto_hide="true" id="Run" order="2" sideWeight="0.49848714" weight="0.32972136" />
       <window_info anchor="bottom" auto_hide="true" x="22" y="277" width="1322" height="213" id="Terminal" order="7" weight="0.32972136" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23146747" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23524962" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -704,10 +707,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ParserFolder/FullParser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="53" column="100" lean-forward="true" selection-start-line="53" selection-start-column="100" selection-end-line="53" selection-end-column="100" />
+        <state relative-caret-position="210">
+          <caret line="116" column="14" selection-start-line="116" selection-start-column="14" selection-end-line="116" selection-end-column="14" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#745#1081#0" />
+            <element signature="e#1120#1688#0" />
+            <element signature="e#1803#3872#0" />
           </folding>
         </state>
       </provider>

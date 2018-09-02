@@ -114,10 +114,12 @@ while 1:
     count = 0
     elements = driver.find_elements_by_xpath("//div[@class='wl-MediaButtonLoader wl-MediaButtonLoader_ML1 ']")
 
+    delay = 50 / len(elements)
+
     for element in elements:
         try:
             element.click()
-            time.sleep(1)
+            time.sleep(delay)
             try:
                 statsTeamOne = driver.find_elements_by_xpath("//div[@class='ml1-StatWheel_Team1Text ']")
                 statsTeamTwo = driver.find_elements_by_xpath("//div[@class='ml1-StatWheel_Team2Text ']")
