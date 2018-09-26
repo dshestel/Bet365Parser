@@ -26,9 +26,11 @@ def getCoef(league, index):
             if (' ' in league[i]) == False:
                 value = float(league[i])
                 coef.append(value)
+
         except:
             print("Unexpected error:", sys.exc_info()[0])
     splittedCoef.append([test, coef])
+    iteration = 1
 
 
 def newLeagueSplitter(leagues):
@@ -49,14 +51,24 @@ def newLeagueSplitter(leagues):
     return splittedCommandByLeague
 
 
+def leagueDetection(leagues, commandName, leagueName):
+    for i in range(len(leagues)):
+        for j in range(len(leagues[i])):
+            if [commandName[0].text] == [leagues[i][j]] or [commandName[1].text] == [leagues[i][j]]:
+                leagueName.append(leagues[i][0])
+                return leagueName
+
+
 def newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, leagues, commandName, score):
 
     file_exist = os.path.isfile('D:/MatchDataset/' + commandName[0].text + commandName[1].text + '.csv')
-    file = open('D:/MatchDataset/' + commandName[0].text + commandName[1].text + '.csv', 'a+')
+    file = open('D:/MatchDataset/' + commandName[0].text + commandName[1].text + '.csv', 'a+', newline='')
     writer = csv.writer(file)
     if file_exist == False:
         writer.writerow(myData)
     if len(timer.text) > 0:
+        if timer.text == "45:00" or timer.text == "00:00":
+            return
         data = [[timer.text]]
     else:
         data = [['00:00']]
@@ -85,11 +97,10 @@ def newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, lea
         for i in range(0, 2):
             data.append(['0', '0'])
     leagues = newLeagueSplitter(leagues)
+
     leagueName = []
-    for i in range(len(leagues)):
-        for j in range(len(leagues[i])):
-            if [commandName[0].text] == [leagues[i][j]] or [commandName[1].text] == [leagues[i][j]]:
-               leagueName.append(leagues[i][0])
+
+    leagueName = leagueDetection(leagues, commandName, leagueName);
 
     if len(leagueName) > 0:
         data.append([leagueName[0]])
@@ -100,9 +111,10 @@ def newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, lea
 
     for i in range(len(splittedCoef)):
         if len(splittedCoef[i]) > 0:
-            if commandName[0].text == splittedCoef[i][0] or commandName[1].text == splittedCoef[i][0]:
+            if commandName[0].text == splittedCoef[i][0]:
                 for coef in splittedCoef[i][1]:
                     data.append([coef])
+                break
 
     writer.writerow(data)
     print(data)
@@ -114,7 +126,10 @@ while 1:
     count = 0
     elements = driver.find_elements_by_xpath("//div[@class='wl-MediaButtonLoader wl-MediaButtonLoader_ML1 ']")
 
-    delay = 50 / len(elements)
+    if len(elements) > 0:
+        delay = 50 / len(elements)
+    else:
+        delay = 1
 
     for element in elements:
         try:
@@ -132,9 +147,8 @@ while 1:
                 leagues = driver.find_elements_by_xpath("//div[@class='ipo-Competition ipo-Competition-open ']")
                 timer = driver.find_element_by_xpath("//span[@class='ml1-ScoreHeader_Clock ']")
 
-
                 newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, leagues, commandName, score)
-                iteration = 1
+                #iteration = 1
             except:
                 print("Unexpected error:", sys.exc_info()[0])
         except:
