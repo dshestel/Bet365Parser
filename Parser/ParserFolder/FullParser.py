@@ -5,9 +5,8 @@ import os.path
 from selenium import webdriver
 
 
-driver = webdriver.Chrome('D:/chromedriver1.exe')
+driver = webdriver.Chrome(os.path.dirname(os.path.abspath('')) + '\chromedriver1.exe')
 
-driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
 driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
 
 splittedCoef = [[]]
@@ -122,6 +121,7 @@ def newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, lea
 
 
 while 1:
+    driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
     time.sleep(5)
     count = 0
     elements = driver.find_elements_by_xpath("//div[@class='wl-MediaButtonLoader wl-MediaButtonLoader_ML1 ']")
