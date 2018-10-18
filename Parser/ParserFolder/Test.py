@@ -1,41 +1,15 @@
-test = "1.5"
+import time
+from selenium import webdriver
 
-try:
-    print(float(test))
-except:
-    print ("error")
+driver = webdriver.Chrome('D:/chromedriver1.exe')
 
-
-# import csv
-# import time
-# from selenium import webdriver
-#
-# driver = webdriver.Chrome('D:/chromedriver1.exe')
-#
-# driver.get('https://mobile.bet365.com/#type=InPlay;key=;ip=1;lng=1')
-#
-# myData = [["Attacks"], ["Dangerous Attacks"], ["Possession %"], ["On Target"], ["Off Target"], ["Command Name"]]
-#
-# myFile = open('D:/example11.csv', 'w')
-#
-# count = 165
-#
-# with myFile:
-#     writer = csv.writer(myFile)
-#     writer.writerow(myData)
-#     while count > 0:
-#         time.sleep(30)
-#         try:
-#             stats = driver.find_element_by_xpath("//div[@class='ml1-AllStats ml1-AllStats_PosBar ']")
-#             stat = stats.text.split(' ')
-#             data = [[stat[0].split('\n')[1], stat[0].split('\n')[2]]]
-#             data.append([stat[1].split('\n')[1], stat[1].split('\n')[2]])
-#             data.append([stat[2].split('\n')[1], stat[2].split('\n')[2]])
-#             data.append([stat[3].split('\n')[1], stat[3].split('\n')[2]])
-#             data.append([stat[4].split('\n')[1], stat[4].split('\n')[2]])
-#             data.append("ads")
-#             writer.writerow(data)
-#             print(data)
-#             count -= 1
-#         except:
-#             print("error")
+driver.get('https://mobile.bet365.com/#type=InPlay;key=;ip=1;lng=1')
+#<div class="ipo-Classification sport_1 "><h4 class="ipo-Classification_Name">Soccer</h4></div>
+while 1:
+    time.sleep(5)
+    elements = driver.find_elements_by_xpath("//div[@class='wl-MediaButtonLoader wl-MediaButtonLoader_ML1 ']")
+    if len(elements) == 0:
+        elements1 = driver.find_elements_by_xpath("//div[@class='ipo-Classification sport_1 ']")
+        print(len(elements1))
+        if len(elements1) > 0:
+            elements1[0].click()
