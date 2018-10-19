@@ -163,8 +163,13 @@ while 1:
     else:
         soccer = driver.find_elements_by_xpath("//div[@class='ipo-Classification sport_1 ']")
         print(len(soccer))
-        #if len(elements1) > 0:
-        #    elements1[0].click()
+        if len(soccer) > 0:
+            soccer[0].click()
+            bar_item = driver.find_elements_by_xpath("//div[@class='ip-ControlBar_BBarItem ']")
+            for element in bar_item:
+                if element.text == "Overview":
+                    element.click();
+                    break
 
 
     driver.refresh()
