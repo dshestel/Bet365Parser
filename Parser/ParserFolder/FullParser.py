@@ -3,6 +3,7 @@ import time
 import sys
 import os.path
 from selenium import webdriver
+import re
 
 
 driver = webdriver.Chrome(os.path.dirname(os.path.abspath('')) + '\chromedriver1.exe')
@@ -11,6 +12,7 @@ driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
 driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
 
 splittedCoef = [[]]
+splittedLeagues = [[]]
 iteration = 0
 
 myData = [["Time"], ["Attacks"], ["Dangerous Attacks"], ["Possession %"], ["On Target"], ["Off Target"], ["League"], ["Command Name"], ["Score"],
@@ -37,19 +39,28 @@ def getCoef(league, index):
 def newLeagueSplitter(leagues):
     splittedCommandByLeague = [[]]
     s = []
+    #t = time.time()
+
     for i in range(len(leagues)):
-        league = leagues[i].text.split('\n')
+        league = re.split("\n", leagues[i].text)
+        #league = leagues[i].text.split('\n')
         s.append(league[0])
+        #print(s)
+
         for j in range(len(league)):
             if len(league[j]) == 5 and league[j][2] == ':':
                 if iteration == 0:
                     getCoef(league, j + 6)  #+4 because 0 - time +1 - command 1 name +2 - command 2 name +3 - draw
                 s.append(league[j + 1])
                 s.append(league[j + 2])
-
         splittedCommandByLeague.append(s)
         s = []
-    return splittedCommandByLeague
+
+    #print(time.time() - t)
+    for i in range(len(splittedCommandByLeague)):
+        splittedLeagues.append(splittedCommandByLeague[i])
+    print(splittedLeagues)
+    #return splittedCommandByLeague
 
 
 def leagueDetection(leagues, commandName, leagueName):
@@ -74,6 +85,7 @@ def newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, lea
     else:
         data = [['00:00']]
 
+
     if len(statsTeamOne) > 0:
         data.append([statsTeamOne[0].text, statsTeamTwo[0].text])
         if len(statsTeamOne) > 1:
@@ -88,6 +100,7 @@ def newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, lea
     else:
         for i in range(0, 3):
             data.append(['0', '0'])
+
     if len(moreStatsOne) > 0:
         data.append([moreStatsOne[0].text, moreStatsTwo[0].text])
         if len(moreStatsOne) > 1:
@@ -97,11 +110,15 @@ def newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, lea
     else:
         for i in range(0, 2):
             data.append(['0', '0'])
-    leagues = newLeagueSplitter(leagues)
+
+    if len(splittedLeagues) == 1:
+        newLeagueSplitter(leagues)
+    #print(len(splittedLeagues))
+    #print(splittedCoef)
 
     leagueName = []
 
-    leagueName = leagueDetection(leagues, commandName, leagueName);
+    leagueName = leagueDetection(splittedLeagues, commandName, leagueName);
 
     if len(leagueName) > 0:
         data.append([leagueName[0]])
@@ -135,7 +152,6 @@ while 1:
                 element.click()
                 time.sleep(delay)
                 try:
-                    #t = time.time()
 
                     statsTeamOne = driver.find_elements_by_xpath("//div[@class='ml1-StatWheel_Team1Text ']")
                     statsTeamTwo = driver.find_elements_by_xpath("//div[@class='ml1-StatWheel_Team2Text ']")
@@ -151,9 +167,10 @@ while 1:
                     newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, leagues, commandName,
                               score)
 
-                    #print(time.time() - t)
+
                 except:
                     print("Unexpected error:", sys.exc_info()[0])
+                    print("error here")
             except:
                 print("Unexpected error:", sys.exc_info()[0])
 
@@ -171,5 +188,5 @@ while 1:
                     element.click();
                     break
 
-
+    splittedLeagues = [[]]
     driver.refresh()
