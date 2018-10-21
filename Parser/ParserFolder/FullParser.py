@@ -14,6 +14,7 @@ driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
 splittedCoef = [[]]
 splittedLeagues = [[]]
 iteration = 0
+globalIndex = 0
 
 myData = [["Time"], ["Attacks"], ["Dangerous Attacks"], ["Possession %"], ["On Target"], ["Off Target"], ["League"], ["Command Name"], ["Score"],
           ["1x2 First command"], ["1x2 The second command"], ["1x2 Draw"], ["Next goal First command"], ["Next goal second command"], ["Next goal Draw"],
@@ -37,15 +38,15 @@ def getCoef(league, index):
 
 
 def newLeagueSplitter(leagues):
+    print("hereherehere")
     splittedCommandByLeague = [[]]
     s = []
-    #t = time.time()
+
 
     for i in range(len(leagues)):
         league = re.split("\n", leagues[i].text)
         #league = leagues[i].text.split('\n')
         s.append(league[0])
-        #print(s)
 
         for j in range(len(league)):
             if len(league[j]) == 5 and league[j][2] == ':':
@@ -56,7 +57,6 @@ def newLeagueSplitter(leagues):
         splittedCommandByLeague.append(s)
         s = []
 
-    #print(time.time() - t)
     for i in range(len(splittedCommandByLeague)):
         splittedLeagues.append(splittedCommandByLeague[i])
     print(splittedLeagues)
@@ -64,10 +64,12 @@ def newLeagueSplitter(leagues):
 
 
 def leagueDetection(leagues, commandName, leagueName):
-    for i in range(len(leagues)):
+    global globalIndex
+    for i in range(globalIndex, len(leagues)):
         for j in range(len(leagues[i])):
             if [commandName[0].text] == [leagues[i][j]] or [commandName[1].text] == [leagues[i][j]]:
                 leagueName.append(leagues[i][0])
+                globalIndex = i
                 return leagueName
 
 
@@ -76,6 +78,7 @@ def newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, lea
     file_exist = os.path.isfile('D:/MatchDataset/' + commandName[0].text + commandName[1].text + '.csv')
     file = open('D:/MatchDataset/' + commandName[0].text + commandName[1].text + '.csv', 'a+', newline='')
     writer = csv.writer(file)
+
     if file_exist == False:
         writer.writerow(myData)
     if len(timer.text) > 0:
@@ -113,8 +116,6 @@ def newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, lea
 
     if len(splittedLeagues) == 1:
         newLeagueSplitter(leagues)
-    #print(len(splittedLeagues))
-    #print(splittedCoef)
 
     leagueName = []
 
@@ -144,8 +145,10 @@ while 1:
     elements = driver.find_elements_by_xpath("//div[@class='wl-MediaButtonLoader wl-MediaButtonLoader_ML1 ']")
 
     if len(elements) > 0:
-        #delay = 50 / len(elements)
-        delay = 1
+        if len(elements) < 10:
+            delay = 50 / len(elements)
+        else:
+            delay = 0.5
 
         for element in elements:
             try:
@@ -163,22 +166,23 @@ while 1:
                     score = driver.find_elements_by_xpath("//div[@class='ml1-ScoreHeader_Score ']")
                     leagues = driver.find_elements_by_xpath("//div[@class='ipo-Competition ipo-Competition-open ']")
                     timer = driver.find_element_by_xpath("//span[@class='ml1-ScoreHeader_Clock ']")
-
+                    #t = time.time()
                     newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, leagues, commandName,
                               score)
+                    #print(time.time() - t)
 
 
                 except:
                     print("Unexpected error:", sys.exc_info()[0])
-                    print("error here")
             except:
                 print("Unexpected error:", sys.exc_info()[0])
+                print("error here 2")
 
-        iteration = 0
-        splittedCoef = [[]]
+
 
     else:
-        soccer = driver.find_elements_by_xpath("//div[@class='ipo-Classification sport_1 ']")
+        #<div class="ipc-InPlayClassificationIcon ipc-InPlayClassificationIcon-1"></div>
+        soccer = driver.find_elements_by_xpath("//div[@class='ipc-InPlayClassificationIcon ipc-InPlayClassificationIcon-1']")
         print(len(soccer))
         if len(soccer) > 0:
             soccer[0].click()
@@ -187,6 +191,15 @@ while 1:
                 if element.text == "Overview":
                     element.click();
                     break
+        else:
+            bar_item = driver.find_elements_by_xpath("//div[@class='ip-ControlBar_BBarItem ']")
+            for element in bar_item:
+                if element.text == "Overview":
+                    element.click();
+                    break
 
+    iteration = 0
+    splittedCoef = [[]]
     splittedLeagues = [[]]
+    globalIndex = 0
     driver.refresh()
