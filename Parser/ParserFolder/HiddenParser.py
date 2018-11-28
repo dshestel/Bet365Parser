@@ -1,18 +1,15 @@
 import csv
 import time
-import sys
 import os.path
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import re
 
-#options = Options()
-#options.add_argument('--headless')
-#options.add_argument('--disable-gpu')  # Last I checked this was necessary.
-#driver = webdriver.Chrome(os.path.dirname(os.path.abspath('')) + '\chromedriver1.exe', chrome_options=options)
-driver = webdriver.Chrome(os.path.dirname(os.path.abspath('')) + '\chromedriver1.exe')
+options = Options()
+options.add_argument('--headless')
+options.add_argument('--disable-gpu')  # Last I checked this was necessary.
+driver = webdriver.Chrome(os.path.dirname(os.path.abspath('')) + '\chromedriver1.exe', chrome_options=options)
 
-#driver.set_window_position(-10000, 0)
 driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
 driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
 
@@ -36,7 +33,6 @@ def getCoef(league, index):
 
         except:
             a = 1
-            #print("Unexpected error:", sys.exc_info()[0])
     for i in range(len(coefs)):
         coefs[i] = str(float(coefs[i]) - 1)
     splittedCoef.append([test, coefs])
@@ -62,8 +58,6 @@ def newLeagueSplitter(leagues):
 
     for i in range(len(splittedCommandByLeague)):
         splittedLeagues.append(splittedCommandByLeague[i])
-    #print(splittedLeagues)
-    #return splittedCommandByLeague
 
 
 def leagueDetection(leagues, commandName, leagueName):
@@ -138,7 +132,6 @@ def newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, lea
             break
 
     writer.writerow(data)
-    print(data)
     file.close()
 
 
@@ -159,7 +152,6 @@ while 1:
                 element.click()
                 time.sleep(delay)
                 try:
-
                     statsTeamOne = driver.find_elements_by_xpath("//div[@class='ml1-StatWheel_Team1Text ']")
                     statsTeamTwo = driver.find_elements_by_xpath("//div[@class='ml1-StatWheel_Team2Text ']")
                     moreStatsOne = driver.find_elements_by_xpath("//span[@class='ml1-SoccerStatsBar_MiniBarValue"
@@ -171,22 +163,13 @@ while 1:
                     leagues = driver.find_elements_by_xpath("//div[@class='ipo-Competition ipo-Competition-open ']")
                     timer = driver.find_element_by_xpath("//span[@class='ml1-ScoreHeader_Clock ']")
 
-                    #tic
-                    #t = time.time()
                     newWriter(timer, statsTeamOne, statsTeamTwo, moreStatsOne, moreStatsTwo, leagues, commandName,
                               score)
-                    #toc
-                    #print(time.time() - t)
-
 
                 except:
-                    #print("Unexpected error:", sys.exc_info()[0])
                     a = 1
             except:
-                #print("Unexpected error:", sys.exc_info()[0])
                 a = 1
-
-
 
     else:
         soccer = driver.find_elements_by_xpath("//div[@class='ipc-InPlayClassificationIcon ipc-InPlayClassificationIcon-1']")
