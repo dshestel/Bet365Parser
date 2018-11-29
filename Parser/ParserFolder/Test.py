@@ -49,7 +49,8 @@ opening = driver.find_elements_by_xpath("//div[@class='ipn-Classification ipn-Cl
 #best option
 
 #try
-xpath = driver.find_elements_by_xpath("/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[1]/div/div/div/div[3]/div[2]/div")
+xpath = driver.find_elements_by_xpath("/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[1]"
+                                      "/div/div/div/div[3]/div[2]/div")
 #
 
 print(len(xpath))
