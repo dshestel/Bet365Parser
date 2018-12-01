@@ -12,23 +12,15 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Parser$Test.coverage" NAME="Test Coverage Results" MODIFIED="1543445703722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ParserFolder" />
     <SUITE FILE_PATH="coverage/Parser$EventView.coverage" NAME="EventView Coverage Results" MODIFIED="1541373998034" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ParserFolder" />
-    <SUITE FILE_PATH="coverage/Parser$EventParser.coverage" NAME="EventParser Coverage Results" MODIFIED="1543522273830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BetEventParser" />
+    <SUITE FILE_PATH="coverage/Parser$EventParser.coverage" NAME="EventParser Coverage Results" MODIFIED="1543701795746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BetEventParser" />
     <SUITE FILE_PATH="coverage/Parser$FullParser.coverage" NAME="FullParser Coverage Results" MODIFIED="1540552115354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ParserFolder" />
     <SUITE FILE_PATH="coverage/Parser$ChromeHider.coverage" NAME="ChromeHider Coverage Results" MODIFIED="1540294351633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ParserFolder" />
+    <SUITE FILE_PATH="coverage/Parser$Testing2.coverage" NAME="Testing2 Coverage Results" MODIFIED="1543534062166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BetEventParser" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5375">
+    <splitter split-orientation="horizontal" split-proportion="0.52781">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="FullParser.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ParserFolder/FullParser.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3264">
-                  <caret line="198" column="25" selection-start-line="198" selection-start-column="25" selection-end-line="198" selection-end-column="25" />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="HiddenParser.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ParserFolder/HiddenParser.py">
               <provider selected="true" editor-type-id="text-editor">
@@ -66,8 +58,8 @@
           <file leaf-file-name="EventParser.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/BetEventParser/EventParser.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="665">
-                  <caret line="56" column="28" lean-forward="true" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
+                <state relative-caret-position="510">
+                  <caret line="30" selection-start-line="30" selection-end-line="30" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
                   </folding>
@@ -79,14 +71,23 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Test.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Test.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ParserFolder/Test.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="243">
-                  <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+                <state relative-caret-position="731">
+                  <caret line="45" selection-start-line="45" selection-end-line="45" />
                   <folding>
                     <element signature="e#871#882#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="FullParser.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/ParserFolder/FullParser.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="346">
+                  <caret line="182" column="20" lean-forward="true" selection-start-line="182" selection-start-column="20" selection-end-line="182" selection-end-column="66" />
                 </state>
               </provider>
             </entry>
@@ -117,6 +118,7 @@
         <option value="$PROJECT_DIR$/ParserFolder/HidenParser.py" />
         <option value="$PROJECT_DIR$/ParserFolder/EventView.py" />
         <option value="$PROJECT_DIR$/ParserFolder/Test.py" />
+        <option value="$PROJECT_DIR$/BetEventParser/Testing2.py" />
         <option value="$PROJECT_DIR$/BetEventParser/EventParser.py" />
       </list>
     </option>
@@ -141,6 +143,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -162,7 +165,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -181,25 +183,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.EventParser">
-    <configuration name="ChromeHider" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Parser" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ParserFolder" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ParserFolder/ChromeHider.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="EventParser" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Parser" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -276,20 +259,39 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="Testing2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Parser" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BetEventParser" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BetEventParser/Testing2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <list>
       <item itemvalue="Python.FullParser" />
       <item itemvalue="Python.Test" />
-      <item itemvalue="Python.ChromeHider" />
       <item itemvalue="Python.EventView" />
       <item itemvalue="Python.EventParser" />
+      <item itemvalue="Python.Testing2" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.EventParser" />
+        <item itemvalue="Python.Testing2" />
         <item itemvalue="Python.Test" />
         <item itemvalue="Python.EventView" />
         <item itemvalue="Python.FullParser" />
-        <item itemvalue="Python.ChromeHider" />
       </list>
     </recent_temporary>
   </component>
@@ -315,9 +317,9 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" auto_hide="true" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.27348644" />
+      <window_info anchor="bottom" auto_hide="true" id="Run" order="2" sideWeight="0.49924356" weight="0.27244258" />
       <window_info anchor="bottom" auto_hide="true" id="Terminal" order="7" weight="0.32972136" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10554371" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07995736" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -345,16 +347,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ParserFolder/Test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-          <folding>
-            <element signature="e#871#882#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ParserFolder/ChromeHider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -618,6 +610,17 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://F:/Miner/FullParser.py" />
+    <entry file="file://$PROJECT_DIR$/ParserFolder/Test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#871#882#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BetEventParser/Testing2.py" />
     <entry file="file://$PROJECT_DIR$/ParserFolder/HiddenParser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2516">
@@ -635,13 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ParserFolder/FullParser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3264">
-          <caret line="198" column="25" selection-start-line="198" selection-start-column="25" selection-end-line="198" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ParserFolder/EventView.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -653,22 +649,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BetEventParser/EventParser.py">
+    <entry file="file://$PROJECT_DIR$/ParserFolder/FullParser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="56" column="28" lean-forward="true" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="346">
+          <caret line="182" column="20" lean-forward="true" selection-start-line="182" selection-start-column="20" selection-end-line="182" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ParserFolder/Test.py">
+    <entry file="file://$PROJECT_DIR$/BetEventParser/EventParser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+        <state relative-caret-position="510">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
-            <element signature="e#871#882#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
