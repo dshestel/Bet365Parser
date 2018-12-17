@@ -4,11 +4,12 @@ import os.path
 from selenium import webdriver
 
 driver = webdriver.Chrome(os.path.dirname(os.path.abspath('')) + '\chromedriver1.exe')
+#driver.set_window_size(1920, 1080)
 
 driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
 driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
 
-csvData = [["League"], ["Command Name"], ["Time"], ["Corner"], ["Yellow Card"], ["Red Card"],
+csvData = [["Time"], ["Corner"], ["Yellow Card"], ["Red Card"],
            ["Penalty"], ["Goal"], ["Attacks"], ["Dangerous Attacks"], ["Possession %"],
            ["On Target"], ["Off Target"], ["Fulltime result"], ["Double Chance"], ["Half time result"],
            ["Match Goals"], ["Asian Handicap"]]
@@ -28,17 +29,29 @@ while True:
                                                    "/div[@class='ipn-Competition ipn-Competition-closed ']")
     if len(closed_element) > 0:
         for element in closed_element:
-            element.click()
-            time.sleep(1)
+            try:
+                element.click()
+                time.sleep(1)
+            except:
+                print('hiden error')
 
     # best selector
     xpath = driver.find_elements_by_xpath("/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[1]/div/div/div/div"
                                           "[3]/div[2]/div/div/div/div[@class='ipn-FixtureButton ']")
+
+    delay = 3
+
+    if len(xpath) > 0:
+        if len(xpath) > 20:
+            delay = 1
+        else:
+            delay = 50 / len(xpath)
+
     if len(xpath) > 0:
         for element in xpath:
             try:
                 element.click()
-                time.sleep(3)
+                time.sleep(delay)
 
                 # tmp data
                 data = []
@@ -51,7 +64,8 @@ while True:
                 #
                 try:
                     league = driver.find_element_by_xpath(
-                        '/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]/div/div/div/div[2]/div[1]/div[1]')
+                        "/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]/div/div/div/div[2]/div[1]"
+                        "/div[@class='ipe-GridHeader_FixtureBreadcrumbWrapper ']")
                     split_league = league.text.split('\n')
 
                     if len(split_league) > 1:
@@ -62,18 +76,23 @@ while True:
                         data.append([split_league[0]])
                 except:
                     print("league & command name error")
+                    data.append(['None'])
+                    data.append(['None'])
 
                 try:
-                    timer = driver.find_element_by_xpath('/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]'
-                                                         '/div/div/div/div[1]/div[1]/div[2]/div[1]')
+                    timer = driver.find_element_by_xpath("/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]"
+                                                         "/div/div/div/div[1]/div[1]/div[2]"
+                                                         "/div[@class='ipe-SoccerHeaderLayout_ExtraData ']")
                     data = [[timer.text]]
                 except:
                     print("Time error")
                     data = [['00:00']]
 
                 try:
-                    corner = driver.find_element_by_xpath('/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]'
-                                                          '/div/div/div/div[1]/div[1]/div[2]/div[3]/div[3]')
+                    corner = driver.find_element_by_xpath("/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]"
+                                                          "/div/div/div/div[1]/div[1]/div[2]/div[3]"
+                                                          "/div[@class='ipe-SoccerGridColumn "
+                                                          "ipe-SoccerGridColumn_ICorner ']")
                     split_corner = corner.text.split('\n')
                     data.append([split_corner[0], split_corner[1]])
                 except:
@@ -81,8 +100,10 @@ while True:
                     data.append(["None"])
 
                 try:
-                    yellow_card = driver.find_element_by_xpath('/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]'
-                                                               '/div[2]/div/div/div/div[1]/div[1]/div[2]/div[3]/div[4]')
+                    yellow_card = driver.find_element_by_xpath("/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]"
+                                                               "/div[2]/div/div/div/div[1]/div[1]/div[2]/div[3]"
+                                                               "/div[@class='ipe-SoccerGridColumn "
+                                                               "ipe-SoccerGridColumn_IYellowCard ']")
                     split_yellow_card = yellow_card.text.split('\n')
                     data.append([split_yellow_card[0], split_yellow_card[1]])
                 except:
@@ -90,8 +111,10 @@ while True:
                     data.append(["None"])
 
                 try:
-                    red_card = driver.find_element_by_xpath('/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]'
-                                                            '/div/div/div/div[1]/div[1]/div[2]/div[3]/div[5]')
+                    red_card = driver.find_element_by_xpath("/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]"
+                                                            "/div/div/div/div[1]/div[1]/div[2]/div[3]"
+                                                            "/div[@class='ipe-SoccerGridColumn "
+                                                            "ipe-SoccerGridColumn_IRedCard ']")
                     split_red_card = red_card.text.split('\n')
                     data.append([split_red_card[0], split_red_card[1]])
                 except:
@@ -99,8 +122,9 @@ while True:
                     data.append(["None"])
 
                 try:
-                    penalty = driver.find_element_by_xpath('/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]'
-                                                           '/div/div/div/div[1]/div[1]/div[2]/div[3]/div[9]')
+                    penalty = driver.find_element_by_xpath("/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]"
+                                                           "/div/div/div/div[1]/div[1]/div[2]/div[3]/div[@class="
+                                                           "'ipe-SoccerGridColumn ipe-SoccerGridColumn_IPenalty ']")
                     split_penalty = penalty.text.split('\n')
                     data.append([split_penalty[0], split_penalty[1]])
                 except:
@@ -108,8 +132,9 @@ while True:
                     data.append(["None"])
 
                 try:
-                    goal = driver.find_element_by_xpath('/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]'
-                                                        '/div/div/div/div[1]/div[1]/div[2]/div[3]/div[10]')
+                    goal = driver.find_element_by_xpath("/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]"
+                                                        "/div/div/div/div[1]/div[1]/div[2]/div[3]/div[@class="
+                                                        "'ipe-SoccerGridColumn ipe-SoccerGridColumn_IGoal ']")
                     split_goal = goal.text.split('\n')
                     data.append([split_goal[0], split_goal[1]])
                 except:
@@ -200,22 +225,47 @@ while True:
                             asian_handicap.append([[split[i + 6], split[i + 7]], [split[i + 17], split[i + 18]]])
                             asian_handicap.append([[split[i + 8], split[i + 9]], [split[i + 19], split[i + 20]]])
                             asian_handicap.append([[split[i + 10], split[i + 11]], [split[i + 21], split[i + 22]]])
+
+                    if len(full_time_result) < 1:
+
+                        data.append(full_time_result)
+
+                    if len(full_time_result) < 1:
+                        data.append(["None"])
+                    else:
+                        data.append(double_chance)
+
+                    if len(full_time_result) < 1:
+                        data.append(["None"])
+                    else:
+                        data.append(half_time_result)
+
+                    if len(full_time_result) < 1:
+                        data.append(["None"])
+                    else:
+                        data.append(match_goals)
+
+                    if len(full_time_result) < 1:
+                        data.append(["None"])
+                    else:
+                        data.append(asian_handicap)
                 except:
                     print("Markets error")
+                    data.append(["None"])
+                    data.append(["None"])
+                    data.append(["None"])
+                    data.append(["None"])
+                    data.append(["None"])
 
-                data.append(full_time_result)
-                data.append(double_chance)
-                data.append(half_time_result)
-                data.append(match_goals)
-                data.append(asian_handicap)
+
 
                 if len(split_league) > 1:
-                    file_exist = os.path.isfile('D:/NewMatchDataset/' + split_league[0] + ' ' + split_league[1] + '.csv')
-                    file = open('D:/NewMatchDataset/' + split_league[0] + ' ' + split_league[1] + '.csv', 'a+', newline='')
+                    file_exist = os.path.isfile('D:/NewMatchDataset1/' + split_league[0] + ' | ' + split_league[1] + '.csv')
+                    file = open('D:/NewMatchDataset1/' + split_league[0] + ' ' + split_league[1] + '.csv', 'a+', newline='')
                     writer = csv.writer(file)
                 else:
-                    file_exist = os.path.isfile('D:/NewMatchDataset/' + split_league[0] + '.csv')
-                    file = open('D:/NewMatchDataset/' + split_league[1] + '.csv', 'a+', newline='')
+                    file_exist = os.path.isfile('D:/NewMatchDataset1/' + split_league[0] + '.csv')
+                    file = open('D:/NewMatchDataset1/' + split_league[1] + '.csv', 'a+', newline='')
                     writer = csv.writer(file)
 
                 if not file_exist:

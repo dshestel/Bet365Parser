@@ -6,14 +6,17 @@ driver = webdriver.Chrome(os.path.dirname(os.path.abspath('')) + '\chromedriver1
 
 driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
 driver.get('https://www.bet365.com/?lng=1&rurl=casino.bet365.com#/IP/')
+#driver.execute_script("window.resizeTo(1920,1080)")
+#driver.maximize_window()
+driver.set_window_size(1920, 780)
 
-time.sleep(10)
+time.sleep(5)
 bar_item = driver.find_elements_by_xpath("//div[@class='ip-ControlBar_BBarItem ']")
 for element in bar_item:
     if element.text == "Event View":
         element.click();
         break
-time.sleep(10)
+time.sleep(5)
 
 # xpath = driver.find_elements_by_xpath("/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[1]/div/div/div/div"
 #                                       "[3]/div[2]/div/div/div/div[@class='ipn-FixtureButton ']")
@@ -33,13 +36,16 @@ time.sleep(10)
 #   /html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]/div/div/div/div[3]/div[7]/div[2]
 #   /html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]/div/div/div/div[3]/div[5]/div[2]
 #
-#
-
+#<div class="ipe-GridHeader_FixtureWrapper "><div class="ipe-GridHeader_BreadCrumbCompetition ">Australia A-League</div></div>
 try:
-    league = driver.find_element_by_xpath('/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]/div/div/div/div[2]/div[1]/div[1]')
-    print(league.text)
+    league = driver.find_elements_by_xpath(
+        "/html/body/div[1]/div/div[2]/div[1]/div/div/div[2]/div[2]/div/div/div/div[2]/div[1]/div[1]/div[@class='ipe-GridHeader_FixtureWrapper ']")
+
+    for element in league:
+        print(element.text)
+    #split_league = league.text.split('\n')
 except:
-    a = 1
+    print('here')
 
 
 # try:
