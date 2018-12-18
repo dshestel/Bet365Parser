@@ -2,4 +2,4 @@
 
 pip install selenium
 
-python ./Parser.py
+python ./EventParser.py
